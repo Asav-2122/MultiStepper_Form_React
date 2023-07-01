@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Stepper, Step, StepLabel, Button, Typography } from "@mui/material";
-import Personalinfo from "./stepcontentforms/Personalinfo";
-import Contactdetails from "./stepcontentforms/Contactdetails";
-import Professionaldetails from "./stepcontentforms/Professionaldetails";
+import Personalinfo from "../stepcontentforms/Personalinfo";
+import Contactdetails from "../stepcontentforms/Contactdetails";
+import Professionaldetails from "../stepcontentforms/Professionaldetails";
 import { useForm, FormProvider } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { addEmployee } from "../redux/slice/employeeSlice";
+import { addEmployee } from "../../redux/slice/employeeSlice";
 
 const steps = ["Personal Info", "Contact Details", "Professional Details"];
 
@@ -84,7 +84,7 @@ const LinearStepper = () => {
             >
               Prev
             </Button>
-            <Button color="primary" variant="contained" type="submit">
+            <Button color="primary" variant="contained" type="submit" sx={{mx:2}}>
               Next
             </Button>
           </form>
