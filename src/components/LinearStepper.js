@@ -4,6 +4,8 @@ import Personalinfo from "./stepcontentforms/Personalinfo";
 import Contactdetails from "./stepcontentforms/Contactdetails";
 import Professionaldetails from "./stepcontentforms/Professionaldetails";
 import { useForm, FormProvider } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { addEmployee } from "../redux/slice/employeeSlice";
 
 const steps = ["Personal Info", "Contact Details", "Professional Details"];
 
@@ -22,6 +24,7 @@ const getStepContent = (activeStep) => {
 
 const LinearStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const dispatch = useDispatch();
   const methods = useForm({
     defaultValues: {
       firstName: "",
@@ -42,13 +45,17 @@ const LinearStepper = () => {
   });
 
   const handleNext = (data) => {
-    console.log(data);
-    setActiveStep(activeStep + 1);
+    if (activeStep === steps.length - 1) {
+      dispatch(addEmployee(data));
+      setActiveStep(activeStep + 1);
+    } else {
+      setActiveStep(activeStep + 1);
+    }
   };
   const handlePrevious = () => {
     setActiveStep(activeStep - 1);
   };
-  
+
   return (
     <div>
       <Stepper activeStep={activeStep}>
