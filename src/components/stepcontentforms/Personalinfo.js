@@ -1,6 +1,6 @@
 import React from "react";
 import "./Personalinfo.css";
-import { TextField, Container, MenuItem, Select, FormControl, InputLabel } from "@mui/material";
+import { TextField, Container } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -102,32 +102,6 @@ const Personalinfo = () => {
             {...field}
           />
         )}
-      />
-
-<Controller control={control}
-       name="position"
-       render={({field})=>(
-        <FormControl fullWidth margin="normal">
-        <InputLabel id="position">Position</InputLabel>
-        <Select
-          labelId="position"
-          id="position"
-          // value={position}
-          // onChange={handleChange}
-          label="Position"
-          size="small"
-          {...field}
-        >
-          <MenuItem value={"Designer"}>Designer</MenuItem>
-          <MenuItem value={"Web Developer"}>Web Developer</MenuItem>
-          <MenuItem value={"Android Developer"}>Android Developer</MenuItem>
-          <MenuItem value={"Ios Developer"}>Ios Developer</MenuItem>
-          <MenuItem value={"Full Stack Developer"}>
-            Full Stack Developer
-          </MenuItem>
-        </Select>
-      </FormControl>
-       )}
       />
     </Container>
   );
