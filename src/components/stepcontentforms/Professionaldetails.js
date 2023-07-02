@@ -2,6 +2,7 @@ import React from "react";
 import {
   Container,
   FormControl,
+  FormHelperText,
   InputLabel,
   MenuItem,
   Select,
@@ -10,13 +11,19 @@ import {
 import { Controller, useFormContext } from "react-hook-form";
 
 const Professionaldetails = () => {
-  const {control} = useFormContext();
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext();
 
   return (
     <Container className="main-container">
       <Controller
         control={control}
         name="position"
+        rules={{
+          required: "pls select your position",
+        }}
         render={({ field }) => (
           <FormControl fullWidth margin="normal">
             <InputLabel id="position">Position</InputLabel>
@@ -26,6 +33,7 @@ const Professionaldetails = () => {
               label="Position"
               size="small"
               {...field}
+              error={Boolean(errors?.position)}
             >
               <MenuItem value={"Designer"}>Designer</MenuItem>
               <MenuItem value={"Web Developer"}>Web Developer</MenuItem>
@@ -35,12 +43,18 @@ const Professionaldetails = () => {
                 Full Stack Developer
               </MenuItem>
             </Select>
+            <FormHelperText sx={{ color: "red" }}>
+              {errors.position?.message}
+            </FormHelperText>
           </FormControl>
         )}
       />
       <Controller
         control={control}
         name="department"
+        rules={{
+          required: "pls select your department",
+        }}
         render={({ field }) => (
           <FormControl fullWidth margin="normal">
             <InputLabel id="department">Department</InputLabel>
@@ -61,6 +75,9 @@ const Professionaldetails = () => {
                 Full Stack Development
               </MenuItem>
             </Select>
+            <FormHelperText sx={{ color: "red" }}>
+              {errors.department?.message}
+            </FormHelperText>
           </FormControl>
         )}
       />
@@ -68,6 +85,9 @@ const Professionaldetails = () => {
       <Controller
         control={control}
         name="status"
+        rules={{
+          required: "pls select your status",
+        }}
         render={({ field }) => (
           <FormControl fullWidth margin="normal">
             <InputLabel id="status">Status</InputLabel>
@@ -82,6 +102,9 @@ const Professionaldetails = () => {
               <MenuItem value={"Part Time"}>Part Time</MenuItem>
               <MenuItem value={"Remote"}>Remote</MenuItem>
             </Select>
+            <FormHelperText sx={{ color: "red" }}>
+              {errors.status?.message}
+            </FormHelperText>
           </FormControl>
         )}
       />
@@ -89,10 +112,14 @@ const Professionaldetails = () => {
       <Controller
         control={control}
         name="experience"
+        rules={{
+          required: "enter your total experience",
+        }}
         render={({ field }) => (
           <TextField
             id="experience"
             label="experience"
+            type="number"
             variant="outlined"
             placeholder="Experience In Years"
             size="small"
@@ -100,12 +127,17 @@ const Professionaldetails = () => {
             autoComplete="off"
             fullWidth
             {...field}
+            error={Boolean(errors?.experience)}
+            helperText={errors.experience?.message}
           />
         )}
       />
       <Controller
         control={control}
         name="current_company"
+        rules={{
+          required: "enter your current company",
+        }}
         render={({ field }) => (
           <TextField
             id="current_company"
@@ -117,6 +149,8 @@ const Professionaldetails = () => {
             autoComplete="off"
             fullWidth
             {...field}
+            error={Boolean(errors?.current_company)}
+            helperText={errors.current_company?.message}
           />
         )}
       />

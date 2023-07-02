@@ -71,7 +71,6 @@ const EmployeeList = () => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-           
               <TableCell>Name</TableCell>
               <TableCell align="right">Position</TableCell>
               <TableCell align="right">Department</TableCell>
@@ -82,7 +81,7 @@ const EmployeeList = () => {
           </TableHead>
           <TableBody>
             {!isEmployeeFound ? (
-              <Typography variant="h5" align="center">
+              <Typography variant="h5" align="center" sx={{ my: 4 }}>
                 No Employee Found
               </Typography>
             ) : (
@@ -108,11 +107,12 @@ const EmployeeList = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      <Container sx={{display:"flex",justifyContent:"space-evenly"}}>
-      <Button variant="contained" disabled={startId.start===0}>Prev</Button>
-      {btn.map((btn) => {
-        return (
-         
+      <Container sx={{ display: "flex", justifyContent: "space-evenly" }}>
+        <Button variant="contained" disabled={startId.start === 0}>
+          Prev
+        </Button>
+        {btn.map((btn) => {
+          return (
             <Button
               variant="outlined"
               key={btn}
@@ -122,10 +122,9 @@ const EmployeeList = () => {
             >
               {btn}
             </Button>
-         
-        );
-      })}
-      <Button variant="contained">Next</Button>
+          );
+        })}
+        <Button variant="contained">Next</Button>
       </Container>
     </div>
   );
