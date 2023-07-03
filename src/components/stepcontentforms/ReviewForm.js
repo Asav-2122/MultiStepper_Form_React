@@ -2,10 +2,11 @@ import { Container, Typography } from "@mui/material";
 import React from "react";
 
 const ReviewForm = ({ activeUserData }) => {
-  let { firstName, lastName, gender, email, experience, position } =
+  let { firstName, lastName, email, experience, position, department, status } =
     activeUserData;
   return (
     <Container
+      className="main-container"
       sx={{
         border: "1px solid black",
         width: "300px",
@@ -17,12 +18,14 @@ const ReviewForm = ({ activeUserData }) => {
       }}
     >
       <Typography>
-        Name: {firstName.toUpperCase()} {lastName.toUpperCase()}
+        Name: {firstName.charAt(0).toUpperCase() + firstName.slice(1)}{" "}
+        {lastName.charAt(0).toUpperCase() + lastName.slice(1)}
       </Typography>
-      <Typography>Gender: {gender.toUpperCase()}</Typography>
+      <Typography>Position: {position}</Typography>
+      <Typography>department: {department}</Typography>
       <Typography>Email: {email}</Typography>
       <Typography>Experience: {experience}</Typography>
-      <Typography>Position: {position}</Typography>
+      <Typography>Status: {status}</Typography>
     </Container>
   );
 };

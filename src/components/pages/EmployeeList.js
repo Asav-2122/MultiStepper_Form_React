@@ -16,6 +16,7 @@ const EmployeeList = () => {
   const [isEmployeeFound, setIsEmployeeFound] = useState(true);
   const [btn, setButton] = useState([]);
   const [startId, setStartId] = useState({ start: 0, end: 5 });
+
   const generateButton = () => {
     let btn = [];
     for (let i = 1; i <= Math.ceil(employeeData.length / 5); i++) {
@@ -92,7 +93,6 @@ const EmployeeList = () => {
                     key={index}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    {/* <TableCell>{index+1}</TableCell> */}
                     <TableCell component="th" scope="row">
                       {row.firstName + " " + row.lastName}
                     </TableCell>

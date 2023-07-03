@@ -5,7 +5,7 @@ import { Controller, useFormContext } from "react-hook-form";
 const Contactdetails = () => {
   const {
     control,
-    formState:{ errors },
+    formState: { errors },
   } = useFormContext();
   return (
     <Container className="main-container">
@@ -13,7 +13,7 @@ const Contactdetails = () => {
         control={control}
         name="email"
         rules={{
-          required:"pls enter your email",
+          required: "pls enter your email",
           validate: {
             maxLength: (v) =>
               v.length <= 50 || "The email should have at most 50 characters",
@@ -43,7 +43,14 @@ const Contactdetails = () => {
         control={control}
         name="phone"
         rules={{
-          required:"enter your phone number",
+          required: "pls enter your phone number",
+          validate: {
+            maxLength: (v) =>
+              v.length <= 10 ||
+              "The phone number should have at most 10 characters",
+            matchPattern: (v) =>
+              /^[6-9]\d{9}$/.test(v) || "pls enter valid phone number",
+          },
         }}
         render={({ field }) => (
           <TextField
@@ -72,6 +79,7 @@ const Contactdetails = () => {
             label="linkedin URL"
             variant="outlined"
             placeholder="Enter Your linkedin URL"
+            type="url"
             size="small"
             margin="normal"
             autoComplete="off"

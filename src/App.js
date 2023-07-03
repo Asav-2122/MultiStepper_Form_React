@@ -2,14 +2,14 @@ import { CssBaseline, Box, Paper, Container } from "@mui/material";
 import LinearStepper from "./components/pages/LinearStepper";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import EmployeeList from "./components/pages/EmployeeList";
-import { Provider } from 'react-redux';
-import store from './redux/store/store';
+import { Provider } from "react-redux";
+import store from "./redux/store/store";
 import Navbar from "./components/layout/Navbar";
 
 function App() {
   return (
     <Provider store={store}>
-      <Navbar/>
+      <Navbar />
       <Outlet />
     </Provider>
   );
